@@ -11,11 +11,13 @@ function App() {
   const [city, setCity] = useState("");
 
   useEffect(() => {
-    axios("https://crio-location-selector.onrender.com/countries").then(
-      (res) => {
+    axios("https://crio-location-selector.onrender.com/countries")
+      .then((res) => {
         setCountryList(res.data);
-      }
-    );
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }, []);
   useEffect(() => {
     if (country != "")
@@ -26,7 +28,7 @@ function App() {
           setStateList(res.data);
         })
         .catch((e) => {
-          console.log(e.message);
+          console.log(e);
         });
   }, [country]);
   useEffect(() => {
