@@ -94,7 +94,7 @@ function App() {
           setCity(e.target.value);
           document.getElementById(
             "message"
-          ).innerHTML = `You Selected ${e.target.value}, ${state}, ${country}`;
+          ).innerText = `You Selected ${e.target.value}, ${state}, ${country}`;
         }}
       >
         <option value="" disabled hidden>
