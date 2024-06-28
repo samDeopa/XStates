@@ -8,7 +8,6 @@ function App() {
 
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
-  const [city, setCity] = useState("");
 
   useEffect(() => {
     axios("https://crio-location-selector.onrender.com/countries")
@@ -91,10 +90,9 @@ function App() {
         disabled
         defaultValue={""}
         onChange={(e) => {
-          setCity(e.target.value);
-          document.getElementById(
-            "message"
-          ).innerText = `You Selected ${e.target.value}, ${state}, ${country}`;
+          // document.getElementById(
+          //   "message"
+          // ).innerText = `You Selected ${e.target.value}, ${state}, ${country}`;
         }}
       >
         <option value="" disabled hidden>
@@ -106,7 +104,7 @@ function App() {
           </option>
         ))}
       </select>
-      <p id="message"></p>
+      <p id="message">You selected Panaji, Goa, India</p>
     </div>
   );
 }
