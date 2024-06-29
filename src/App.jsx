@@ -43,68 +43,70 @@ function App() {
         });
   }, [state, country]);
   return (
-    <div>
+    <div className="container">
       <h1>Select Location</h1>
+      <div>
+        <select
+          name="Country"
+          id="Country"
+          disabled={false}
+          onChange={(e) => {
+            setCountry(e.target.value);
+            document.getElementById("State").removeAttribute("disabled");
+          }}
+          defaultValue={""}
+        >
+          <option value="" disabled hidden>
+            Select Country
+          </option>
+          {countryList.map((ele) => (
+            <option key={ele} value={ele}>
+              {ele}
+            </option>
+          ))}
+        </select>
+        <select
+          name="State"
+          id="State"
+          disabled
+          onChange={(e) => {
+            setState(e.target.value);
+            document.getElementById("City").removeAttribute("disabled");
+          }}
+          defaultValue={""}
+        >
+          <option value="" disabled hidden>
+            Select State
+          </option>
+          {stateList.map((ele) => (
+            <option key={ele} value={ele}>
+              {ele}
+            </option>
+          ))}
+        </select>
+        <select
+          name="City"
+          id="City"
+          disabled
+          defaultValue={""}
+          onChange={(e) => {
+            document.getElementById(
+              "message"
+            ).innerText = `You Selected ${e.target.value}, ${state}, ${country}`;
+          }}
+        >
+          <option value="" disabled hidden>
+            Select City
+          </option>
+          {cityList.map((ele) => (
+            <option key={ele} value={ele}>
+              {ele}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <select
-        name="Country"
-        id="Country"
-        disabled={false}
-        onChange={(e) => {
-          setCountry(e.target.value);
-          document.getElementById("State").removeAttribute("disabled");
-        }}
-        defaultValue={""}
-      >
-        <option value="" disabled hidden>
-          Select Country
-        </option>
-        {countryList.map((ele) => (
-          <option key={ele} value={ele}>
-            {ele}
-          </option>
-        ))}
-      </select>
-      <select
-        name="State"
-        id="State"
-        disabled
-        onChange={(e) => {
-          setState(e.target.value);
-          document.getElementById("City").removeAttribute("disabled");
-        }}
-        defaultValue={""}
-      >
-        <option value="" disabled hidden>
-          Select State
-        </option>
-        {stateList.map((ele) => (
-          <option key={ele} value={ele}>
-            {ele}
-          </option>
-        ))}
-      </select>
-      <select
-        name="City"
-        id="City"
-        disabled
-        defaultValue={""}
-        onChange={(e) => {
-          // document.getElementById(
-          //   "message"
-          // ).innerText = `You Selected ${e.target.value}, ${state}, ${country}`;
-        }}
-      >
-        <option value="" disabled hidden>
-          Select City
-        </option>
-        {cityList.map((ele) => (
-          <option key={ele} value={ele}>
-            {ele}
-          </option>
-        ))}
-      </select>
-      <p id="message">You selected Panaji, Goa, India</p>
+      <p id="message"></p>
     </div>
   );
 }
