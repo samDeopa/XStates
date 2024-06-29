@@ -17,6 +17,7 @@ function App() {
       .catch((e) => {
         console.log(e);
       });
+    document.getElementById("message").innerText = "";
   }, []);
   useEffect(() => {
     if (country != "")
@@ -29,6 +30,7 @@ function App() {
         .catch((e) => {
           console.log(e);
         });
+    document.getElementById("message").innerText = "";
   }, [country]);
   useEffect(() => {
     if (state != "")
